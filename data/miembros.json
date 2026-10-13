@@ -15,30 +15,6 @@
       "fecha": "2026-10-13",
       "solicitud": 3,
       "area": "General"
-    },
-    {
-      "numero": 3,
-      "usuario": "NormanSMA",
-      "grado": "Buscador",
-      "area": "General",
-      "fecha": "2026-10-13",
-      "solicitud": null
-    },
-    {
-      "numero": 4,
-      "usuario": "Oalvarado031",
-      "grado": "Buscador",
-      "area": "General",
-      "fecha": "2026-10-13",
-      "solicitud": null
-    },
-    {
-      "numero": 5,
-      "usuario": "Francisco2301",
-      "grado": "Buscador",
-      "area": "General",
-      "fecha": "2026-10-13",
-      "solicitud": null
     }
   ]
 }
