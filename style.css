@@ -4,6 +4,8 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:12px}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+button,a,input,textarea,label{touch-action:manipulation;-webkit-tap-highlight-color:rgba(75,109,147,.25)}
 body{background:var(--bg);color:var(--ink);font-family:'EB Garamond',Georgia,serif;font-size:19px;line-height:1.45;padding:0 0 40px}
 a{color:inherit}
 :focus-visible{outline:3px solid #2a4f9a;outline-offset:2px}
@@ -102,11 +104,39 @@ form .pill{justify-self:start}
   .face{max-width:200px}
   .main{padding-left:0}
 }
+@media(max-width:620px){
+  .page{box-shadow:none}
+  .head{padding:18px 0 14px}
+  .glyph{width:38px;height:38px}
+  .tag{font-size:10.5px;letter-spacing:.16em;padding:0 8px}
+  .menu{margin:12px 12px 0;gap:0 6px}
+  .menu a{padding:11px 7px;font-size:13px}
+  .b1{font-size:5.6cqw}
+  .b2{font-size:4cqw}
+  .h{font-size:19px}
+  .pill{min-height:46px;display:flex;flex-direction:column;justify-content:center;font-size:13px}
+  .pill.sub{display:inline-flex;min-height:50px}
+  .opts button{padding:14px 14px;font-size:18px}
+  .quiz{padding:14px}
+  .mini{min-height:46px;padding:0 16px}
+  input,textarea{padding:12px;font-size:17px}
+  .wall a{width:70px}.wall img{width:70px;height:70px}
+  .ranks td:last-child{display:none}
+  .face{max-width:180px}
+  .cols{padding:16px 12px 8px}
+  .page{padding-bottom:28px}
+}
+@media(max-width:360px){
+  .word{font-size:34px;letter-spacing:.28em}
+  .menu a{font-size:12px;padding:10px 5px}
+  .h{font-size:17px}
+  body{font-size:17px}
+}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
 .check{margin-top:16px}
 .check .row{display:flex;gap:8px}
-.check .row input{margin-top:0}
+.check .row input{margin-top:0;flex:1;min-width:0}
 .mini{font-family:'Cinzel',serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;background:#fff;border:1px solid var(--line);color:#5a6270;padding:0 14px;cursor:pointer;border-radius:7px}
 .mini:hover{border-color:var(--steel);color:var(--steel)}
 
