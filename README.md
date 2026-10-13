@@ -1,6 +1,6 @@
 # epsi
 
-hermandad de github desde managua, nicaragua, inspirada en el programa epsilon de gta v. sitio estático, sin dependencias salvo dos fuentes de google.
+hermandad de github desde managua, nicaragua. sitio estático, sin dependencias salvo dos fuentes de google.
 
 ![portada](assets/hero.png)
 
@@ -22,5 +22,3 @@ https://kisnner26.github.io/epsi/
 ```bash
 python3 -m http.server 8123
 ```
-
-proyecto de humor, sin relación con rockstar games.

@@ -30,5 +30,3 @@ body:
       options:
         - label: mi usuario aparecerá en el registro público de hermanos
           required: true
-        - label: epsi es un proyecto de humor, no una organización real
-          required: true

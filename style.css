@@ -89,15 +89,8 @@ input,textarea{width:100%;font:inherit;padding:9px 11px;border:1px solid #98a4b8
 form .pill{justify-self:start}
 .small{font-size:14px;color:#6c7480}
 
-/* nubes y pie */
-.clouds{height:70px;margin-top:18px;background:
-  radial-gradient(60px 34px at 10% 100%,#fff 60%,transparent 62%),
-  radial-gradient(90px 44px at 28% 105%,#fff 60%,transparent 62%),
-  radial-gradient(70px 36px at 50% 100%,#fff 60%,transparent 62%),
-  radial-gradient(100px 48px at 72% 105%,#fff 60%,transparent 62%),
-  radial-gradient(64px 34px at 92% 100%,#fff 60%,transparent 62%),
-  linear-gradient(#9fbde6,#e4eefb)}
-.foot{padding:12px 20px 22px;text-align:center;font-size:14px;color:#6c7480}
+/* cierre */
+.page{padding-bottom:36px}
 
 @media(max-width:620px){
   body{font-size:18px}
