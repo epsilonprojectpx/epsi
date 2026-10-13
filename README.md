@@ -6,9 +6,13 @@ hermandad de github desde managua, nicaragua. sitio estático, sin dependencias 
 
 ![página completa](assets/pagina.png)
 
+## organización
+
+https://github.com/epsilonprojectpx
+
 ## ver
 
-https://kisnner26.github.io/epsi/
+https://epsilonprojectpx.github.io/epsi/
 
 ## cómo funciona el registro
 

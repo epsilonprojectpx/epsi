@@ -1,5 +1,5 @@
 (() => {
-  const REPO = 'kisnner26/epsi';
+  const REPO = 'epsilonprojectpx/epsi';
   const $ = (s, r = document) => r.querySelector(s);
 
   /* audio: se intenta sonar apenas carga la página. los navegadores solo lo permiten si el sitio
@@ -60,7 +60,7 @@
     })
     .catch(() => { wall.innerHTML = '<span class="empty">El registro no responde. Vuelve en un momento.</span>'; });
 
-  const SITIO = 'https://kisnner26.github.io/epsi';
+  const SITIO = 'https://epsilonprojectpx.github.io/epsi';
   const out = $('#checkout');
   $('#check').addEventListener('submit', e => {
     e.preventDefault();

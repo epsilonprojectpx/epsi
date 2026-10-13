@@ -3,7 +3,7 @@
 import fs from 'node:fs';
 import { generarTodas } from './insignia.mjs';
 
-const REPO = process.env.REPO || 'kisnner26/epsi';
+const REPO = process.env.REPO || 'epsilonprojectpx/epsi';
 const TOKEN = process.env.GITHUB_TOKEN;
 const ORDEN = ['Buscador', 'Devoto', 'Iluminado', 'Hermano-Padre'];
 const gradoPara = n => (n >= 3 ? 'Iluminado' : n >= 1 ? 'Devoto' : 'Buscador');
