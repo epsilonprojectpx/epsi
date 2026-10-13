@@ -58,6 +58,14 @@
         wall.append(a);
       });
     })
+    .then(() => {
+      // enlace directo al carnet: ?u=usuario
+      const u = new URLSearchParams(location.search).get('u');
+      if (!u) return;
+      $('#q').value = u;
+      $('#check').requestSubmit();
+      setTimeout(() => $('#check').scrollIntoView({ block: 'center' }), 150);
+    })
     .catch(() => { wall.innerHTML = '<span class="empty">El registro no responde. Vuelve en un momento.</span>'; });
 
   const SITIO = 'https://epsilonprojectpx.github.io/epsi';
