@@ -28,7 +28,7 @@
 
   <nav class="menu" aria-label="principal">
     <a href="#unirse">únete</a>
-    <a href="#dinero">la ofrenda</a>
+    <a href="#beneficios">beneficios</a>
     <a href="#kifflom">kifflom!</a>
     <a href="#testimonios">el registro</a>
     <a href="#test">la prueba</a>
@@ -91,14 +91,27 @@
         <tr><th>III</th><td><b>Iluminado</b><br>Se le concedió acceso de escritura. El Pensamiento lo abandonó.</td><td>miembro</td></tr>
         <tr><th>IV</th><td><b>Hermano-Padre</b><br>Guía, aprueba y bendice. Su palabra es la rama principal.</td><td>mantenedor</td></tr>
       </table>
+      <p class="small">Los grados I a III suben solos con tus pull requests fusionados. El grado IV lo concede un Hermano-Padre.</p>
+
+      <h2 class="h" id="beneficios">beneficios de la hermandad</h2>
+      <p class="lead">Epsi es un equipo dentro de GitHub: entras, recibes tu lugar y creces con lo que aportas. Esto recibe quien entra:</p>
+      <div class="benef">
+        <article><b>01</b><h3>Número de hermano</h3><p>Un número único y permanente en el registro público. Los primeros son los fundadores.</p></article>
+        <article><b>02</b><h3>Insignia para tu perfil</h3><p>Una insignia con tu número y tu grado para el README de tu perfil de GitHub. Se genera sola al ser aprobado.</p></article>
+        <article><b>03</b><h3>Carnet de hermano</h3><p>Consulta tu carnet en esta web, con tu foto, tu número y tu grado, y compártelo.</p></article>
+        <article><b>04</b><h3>Ascensos por contribución</h3><p>Fusiona pull requests en el repo y sube de grado: uno te hace Devoto, tres, Iluminado. Se actualiza solo cada semana.</p></article>
+        <article><b>05</b><h3>Voz y voto</h3><p>Los Hermanos-Padre deciden quién entra. Quien llega a ese grado puede recibir acceso para aprobar solicitudes.</p></article>
+        <article class="soon"><b>06</b><h3>Proyectos de la hermandad <i>pronto</i></h3><p>Un espacio para publicar y mejorar proyectos entre todos los hermanos.</p></article>
+        <article class="soon"><b>07</b><h3>La hermandad en tu perfil <i>pronto</i></h3><p>Cuando epsi sea una organización de GitHub, su escudo aparecerá junto a tu nombre.</p></article>
+      </div>
 
       <h2 class="h" id="testimonios">el registro de hermanos</h2>
       <p class="lead" id="count">Ellos ya fueron liberados:</p>
       <div class="wall" id="wall"><span class="empty">Buscando a los fieles…</span></div>
       <form id="check" class="check">
-        <label for="q">¿ya eres hermano? consulta tu número</label>
+        <label for="q">¿ya eres hermano? consulta tu carnet</label>
         <div class="row"><input id="q" maxlength="39" pattern="[A-Za-z0-9\-]+" placeholder="tu usuario de github" required><button class="mini" type="submit">consultar</button></div>
-        <p class="small" id="checkout" aria-live="polite"></p>
+        <div id="checkout" aria-live="polite"></div>
       </form>
 
       <h2 class="h" id="test">la prueba de pureza</h2>

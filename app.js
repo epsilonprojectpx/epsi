@@ -60,13 +60,38 @@
     })
     .catch(() => { wall.innerHTML = '<span class="empty">El registro no responde. Vuelve en un momento.</span>'; });
 
+  const SITIO = 'https://kisnner26.github.io/epsi';
+  const out = $('#checkout');
   $('#check').addEventListener('submit', e => {
     e.preventDefault();
-    const u = $('#q').value.trim().toLowerCase();
+    const u = $('#q').value.trim().replace(/^@/, '').toLowerCase();
     const m = miembros.find(x => x.usuario.toLowerCase() === u);
-    $('#checkout').textContent = m
-      ? `@${m.usuario}: hermano N.° ${m.numero}, grado ${m.grado}, desde ${m.fecha}. Kifflom.`
-      : `@${u} no está en el registro. Si ya enviaste tu juramento, espera la aprobación de un Hermano-Padre.`;
+    out.innerHTML = '';
+    if (!m) {
+      const p = document.createElement('p');
+      p.className = 'small';
+      p.textContent = `@${u} no está en el registro. Si ya enviaste tu juramento, espera la aprobación de un Hermano-Padre.`;
+      out.append(p);
+      return;
+    }
+    const md = `[![epsi](${SITIO}/badges/${m.usuario.toLowerCase()}.svg)](${SITIO}/)`;
+    const card = document.createElement('div');
+    card.className = 'carnet';
+    card.innerHTML = `<img class="av" alt="" width="96" height="96">
+      <div><div class="k">epsi · carnet de hermano</div><div class="n"></div><div class="g"></div><div class="u"></div></div>
+      <div class="snip"><div class="k">pon la hermandad en tu perfil</div><img class="ins" alt="insignia de epsi" height="24"><textarea readonly rows="3"></textarea>
+      <button type="button" class="mini">copiar</button></div>`;
+    $('.av', card).src = `https://github.com/${m.usuario}.png?size=192`;
+    $('.n', card).textContent = `Hermano N.° ${m.numero}`;
+    $('.g', card).textContent = `Grado: ${m.grado}`;
+    $('.u', card).textContent = `@${m.usuario} · desde ${m.fecha}`;
+    $('.ins', card).src = `${SITIO}/badges/${m.usuario.toLowerCase()}.svg`;
+    $('textarea', card).value = md;
+    $('.mini', card).addEventListener('click', ev => {
+      navigator.clipboard.writeText(md).then(() => { ev.target.textContent = 'copiado'; }, () => { $('textarea', card).select(); });
+    });
+    out.append(card);
+    kifflom();
   });
 
   /* test */

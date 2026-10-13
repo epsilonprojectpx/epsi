@@ -141,3 +141,31 @@ form .pill{justify-self:start}
 .mini:hover{border-color:var(--steel);color:var(--steel)}
 
 .say{padding:8px 14px;margin:0 0 10px}
+
+/* beneficios */
+.benef{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.benef article{border:1px solid #b3bfd2;border-top:4px solid var(--steel);border-radius:8px;padding:12px 14px;background:var(--pale)}
+.benef b{font-family:'Cinzel',serif;font-size:22px;color:#9bb0cc;line-height:1}
+.benef h3{font-family:'Cinzel',serif;font-weight:700;font-size:14px;letter-spacing:.03em;text-transform:uppercase;color:#35527a;margin:4px 0 4px;line-height:1.2}
+.benef p{font-size:16px;line-height:1.35}
+.benef i{font-style:normal;font-size:10px;letter-spacing:.14em;background:#2a2f3a;color:#fff;padding:2px 6px;border-radius:3px;margin-left:4px;vertical-align:middle}
+.benef .soon{border-top-color:#c3c9d4;background:#f6f8fb}
+.benef .soon p{color:#6c7480}
+
+/* carnet */
+.carnet{margin-top:12px;border:3px double var(--steel);border-radius:10px;padding:14px;background:linear-gradient(#f4f8fd,#dfeaf8);display:grid;grid-template-columns:96px 1fr;gap:14px;align-items:center}
+.carnet img.av{width:96px;height:96px;object-fit:cover;border:1px solid #777;border-radius:8px;background:#fff}
+.carnet .k{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.22em;color:var(--steel);text-transform:uppercase}
+.carnet .n{font-family:'Cinzel',serif;font-weight:900;font-size:26px;line-height:1.05;color:#2a2f3a;text-transform:uppercase;margin:2px 0}
+.carnet .g{font-family:'Cinzel',serif;font-size:14px;color:#35527a;text-transform:uppercase}
+.carnet .u{font-size:15px;color:#4b6d93;word-break:break-all}
+.carnet .snip{grid-column:1/-1}
+.carnet .snip img{display:block;margin:4px 0 8px;max-width:100%;height:24px}
+.carnet textarea{font:13px/1.35 ui-monospace,Menlo,monospace;padding:8px;min-height:62px;resize:none}
+.carnet .mini{margin-top:6px;min-height:40px}
+@media(max-width:620px){
+  .carnet{grid-template-columns:72px 1fr;padding:12px}
+  .carnet img.av{width:72px;height:72px}
+  .carnet .n{font-size:21px}
+  .benef{grid-template-columns:1fr}
+}
