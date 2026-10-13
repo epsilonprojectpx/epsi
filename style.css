@@ -49,7 +49,7 @@ a{color:inherit}
 .sky{position:absolute;inset:0;background:repeating-conic-gradient(from 0deg at 50% 62%,rgba(255,255,255,.9) 0 3.2deg,rgba(176,206,238,.9) 3.2deg 6.4deg)}
 .rows{position:relative;padding-top:2cqw}
 .rows div{font-family:'Cinzel',serif;font-weight:900;font-size:29cqw;line-height:.9;letter-spacing:.03em;text-align:center;color:#fff;-webkit-text-stroke:.9cqw #4d86e6;paint-order:stroke fill;text-shadow:0 0 2.5cqw rgba(77,134,230,.85)}
-.man{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:84%;height:auto}
+.man{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:84%;height:auto;filter:drop-shadow(0 .8cqw 1.4cqw rgba(30,60,110,.45))}
 .b1{position:relative;padding:3cqw 0;background:linear-gradient(#6b84a6,#4f6a8f);color:#dfe8f4;text-align:center;font-family:'Cinzel',serif;font-weight:700;font-size:6.6cqw;line-height:1.1;border-top:3px solid #8aa0bf;text-shadow:0 2px 0 rgba(0,0,0,.35);z-index:2}
 .b2{position:relative;background:#f1f6fd;color:var(--steel);text-align:center;font-family:'Cinzel',serif;font-weight:600;font-size:4.6cqw;line-height:1.25;padding:3.4cqw 4cqw;z-index:2}
 
