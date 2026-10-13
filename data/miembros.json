@@ -6,6 +6,13 @@
       "grado": "Hermano-Padre",
       "fecha": "2026-10-13",
       "solicitud": 2
+    },
+    {
+      "numero": 2,
+      "usuario": "eaguilar0705",
+      "grado": "Buscador",
+      "fecha": "2026-10-13",
+      "solicitud": 3
     }
   ]
 }
