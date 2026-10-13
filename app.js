@@ -1,92 +1,41 @@
 (() => {
   const REPO = 'kisnner26/epsi';
   const $ = (s, r = document) => r.querySelector(s);
-  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 
+  /* música */
   const aud = $('#aud'), music = $('#music');
-  const setMusic = on => {
-    if (on) { aud.volume = .5; aud.play().then(() => music.setAttribute('aria-pressed', 'true')).catch(() => {}); }
-    else { aud.pause(); music.setAttribute('aria-pressed', 'false'); }
-  };
-  music.addEventListener('click', () => setMusic(aud.paused));
-
-  /* puerta */
-  const gate = $('#gate');
-  const open = withMusic => {
-    gate.classList.add('out');
-    document.body.classList.remove('locked');
-    if (withMusic) setMusic(true);
-    try { sessionStorage.setItem('epsi-in', '1'); } catch (e) {}
-  };
-  let seen = false;
-  try { seen = sessionStorage.getItem('epsi-in') === '1'; } catch (e) {}
-  if (location.search.includes('nogate')) seen = true;
-  if (seen) { gate.classList.add('out'); document.body.classList.remove('locked'); }
-  $('#enter').addEventListener('click', () => open(true));
-  $('#enterQuiet').addEventListener('click', () => open(false));
-
-  /* menú */
-  const menu = $('#menu'), burger = $('#burger');
-  burger.addEventListener('click', () => {
-    const o = menu.classList.toggle('open');
-    burger.setAttribute('aria-expanded', o);
+  music.addEventListener('click', () => {
+    if (aud.paused) {
+      aud.volume = .5;
+      aud.play().then(() => { music.setAttribute('aria-pressed', 'true'); music.textContent = 'música: sí'; }).catch(() => {});
+    } else {
+      aud.pause(); music.setAttribute('aria-pressed', 'false'); music.textContent = 'música: no';
+    }
   });
-  menu.addEventListener('click', e => { if (e.target.tagName === 'A') menu.classList.remove('open'); });
 
-  /* progreso y sección activa */
-  const bar = $('#progress');
-  addEventListener('scroll', () => {
-    const h = document.documentElement;
-    bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
-  }, { passive: true });
-  const links = $$('#menu a');
-  const spy = new IntersectionObserver(es => es.forEach(e => {
-    if (e.isIntersecting) links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id));
-  }), { rootMargin: '-45% 0px -50% 0px' });
-  links.forEach(a => { const s = $(a.getAttribute('href')); if (s) spy.observe(s); });
+  /* pie de foto del rostro: cambia cada pocos segundos, como en el original */
+  const caps = [
+    'Posible descendiente de Kraff.',
+    'Antes pensaba mucho.',
+    'Hermano-padre, nivel 4.',
+    'Nunca ha leído un pull request.',
+    'Ya no hace preguntas.'
+  ];
+  let ci = 0;
+  setInterval(() => { ci = (ci + 1) % caps.length; $('#caption').textContent = caps[ci]; }, 4500);
 
-  /* revelado */
-  const rv = new IntersectionObserver(es => es.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('in'); rv.unobserve(e.target); }
-  }), { threshold: .12 });
-  $$('.rv').forEach(el => rv.observe(el));
-
-  /* contadores */
-  const counts = { stars: 0, forks: 0, devotos: 0, pensamientos: 0 };
-  const paint = () => $$('[data-k]').forEach(el => {
-    const to = counts[el.dataset.k], from = +el.textContent || 0, t0 = performance.now();
-    const step = t => {
-      const p = Math.min((t - t0) / 900, 1);
-      el.textContent = Math.round(from + (to - from) * (1 - Math.pow(1 - p, 3)));
-      if (p < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  });
-  let painted = false;
-  const statsObs = new IntersectionObserver(es => {
-    if (es[0].isIntersecting && !painted) { painted = true; paint(); }
-  }, { threshold: .3 });
-  statsObs.observe($('.stats'));
-
-  fetch(`https://api.github.com/repos/${REPO}`)
-    .then(r => r.ok ? r.json() : Promise.reject())
-    .then(d => { counts.stars = d.stargazers_count; counts.forks = d.forks_count; if (painted) paint(); })
-    .catch(() => {});
-
-  /* devotos */
+  /* testimonios: contribuidores reales del repo */
   const wall = $('#wall');
   fetch(`https://api.github.com/repos/${REPO}/contributors?per_page=40`)
     .then(r => r.ok ? r.json() : Promise.reject())
     .then(list => {
       const people = (Array.isArray(list) ? list : []).filter(u => u.type === 'User');
-      counts.devotos = people.length;
-      if (painted) paint();
       if (!people.length) { wall.innerHTML = '<span class="empty">aún nadie. sé el primero.</span>'; return; }
       wall.innerHTML = '';
       people.forEach(u => {
         const a = document.createElement('a');
         a.href = u.html_url; a.target = '_blank'; a.rel = 'noopener';
-        const img = new Image(); img.src = u.avatar_url + '&s=168'; img.alt = ''; img.loading = 'lazy';
+        const img = new Image(); img.src = u.avatar_url + '&s=140'; img.alt = ''; img.loading = 'lazy';
         a.append(img, document.createTextNode(u.login));
         wall.append(a);
       });
@@ -112,10 +61,11 @@
   let qi = 0, score = 0;
   const render = () => {
     if (qi >= QS.length) {
-      const idx = Math.min(3, Math.floor(score / (QS.length * 3) * 4));
-      const [name, txt] = RANKS[score === QS.length * 3 ? 3 : idx];
-      quiz.innerHTML = `<div class="res"><div class="step">tu rango</div><div class="big">${name}</div><p>${txt}</p>
-        <a class="btn" href="#unirse">aplicar ahora</a> <button class="btn ghost" id="again">repetir</button></div>`;
+      const max = QS.length * 3;
+      const [name, txt] = RANKS[score === max ? 3 : Math.min(2, Math.floor(score / max * 4))];
+      quiz.innerHTML = `<div class="res"><div class="step">tu rango</div><div class="big"></div><p></p>
+        <a class="pill green" href="#contacto">APLICA AHORA</a><button class="again" id="again">repetir</button></div>`;
+      $('.big', quiz).textContent = name; $('p', quiz).textContent = txt;
       $('#again').onclick = () => { qi = 0; score = 0; render(); };
       return;
     }
@@ -132,25 +82,14 @@
   };
   render();
 
-  /* formulario: abre una solicitud prellenada en github */
+  /* solicitud: abre un issue prellenado, el usuario decide enviarlo */
   $('#apply').addEventListener('submit', e => {
     e.preventDefault();
     const user = $('#u').value.trim(), why = $('#m').value.trim();
     const title = `solicitud de ingreso: @${user}`;
     const body = `usuario: @${user}\n\n¿por qué quieres soltar el pensamiento?\n${why || 'porque sí.'}\n\nkifflom.`;
-    const url = `https://github.com/${REPO}/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
-    open_(url);
+    window.open(`https://github.com/${REPO}/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`, '_blank', 'noopener');
   });
-  const open_ = u => window.open(u, '_blank', 'noopener');
-
-  /* contador de pensamientos: baja con el scroll */
-  addEventListener('scroll', () => {
-    const h = document.documentElement;
-    const p = h.scrollTop / (h.scrollHeight - h.clientHeight);
-    counts.pensamientos = Math.max(0, Math.round(100 * (1 - p)));
-    if (painted) { const el = $('[data-k="pensamientos"]'); el.textContent = counts.pensamientos; }
-  }, { passive: true });
-  counts.pensamientos = 100;
 
   $('#yr').textContent = new Date().getFullYear();
 })();
