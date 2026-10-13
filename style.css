@@ -37,8 +37,6 @@ a{color:inherit}
 .face svg{width:100%;display:block}
 .cap{font-weight:600;font-size:15px;text-align:center;line-height:1.2;color:#111;min-height:2.4em}
 .f{width:20px;height:34px;margin-top:6px}
-.mini{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:none;border:1px solid var(--line);color:#5a6270;padding:6px 10px;cursor:pointer}
-.mini[aria-pressed="true"]{background:#2a2f3a;color:#fff;border-color:#2a2f3a}
 
 /* títulos grabados */
 .h{font-family:'Cinzel',serif;font-weight:600;font-size:20px;letter-spacing:.04em;text-transform:uppercase;color:#6c7480;text-shadow:1px 1px 0 #fff,-1px -1px 0 #cfd4db;margin:26px 0 8px;line-height:1.1}

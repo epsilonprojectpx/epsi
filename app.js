@@ -2,16 +2,16 @@
   const REPO = 'kisnner26/epsi';
   const $ = (s, r = document) => r.querySelector(s);
 
-  /* música */
-  const aud = $('#aud'), music = $('#music');
-  music.addEventListener('click', () => {
-    if (aud.paused) {
-      aud.volume = .5;
-      aud.play().then(() => { music.setAttribute('aria-pressed', 'true'); music.textContent = 'música: sí'; }).catch(() => {});
-    } else {
-      aud.pause(); music.setAttribute('aria-pressed', 'false'); music.textContent = 'música: no';
-    }
-  });
+  /* música: sin botón para apagarla. arranca sola; si el navegador lo bloquea,
+     arranca con la primera interacción, y se reanuda si algo la pausa */
+  const aud = $('#aud');
+  aud.volume = .5;
+  const play = () => { if (aud.paused) aud.play().catch(() => {}); };
+  play();
+  ['pointerdown', 'keydown', 'touchstart', 'scroll', 'wheel'].forEach(ev =>
+    addEventListener(ev, play, { passive: true }));
+  aud.addEventListener('pause', () => { if (!aud.ended) setTimeout(play, 50); });
+  document.addEventListener('visibilitychange', play);
 
   /* pie de foto del rostro: cambia cada pocos segundos, como en el original */
   const caps = [
