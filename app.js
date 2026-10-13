@@ -13,6 +13,17 @@
   aud.addEventListener('pause', () => { if (!aud.ended) setTimeout(play, 50); });
   document.addEventListener('visibilitychange', play);
 
+  /* voz: "kifflom" a demanda */
+  const voz = new Audio('assets/kifflom.mp3');
+  voz.preload = 'auto';
+  const kifflom = () => { try { voz.currentTime = 0; voz.play().catch(() => {}); } catch (e) {} };
+  // al entrar: una sola vez, con la primera interacción
+  const alEntrar = () => { kifflom(); ['pointerdown', 'keydown', 'touchstart'].forEach(ev => removeEventListener(ev, alEntrar)); };
+  ['pointerdown', 'keydown', 'touchstart'].forEach(ev => addEventListener(ev, alEntrar, { passive: true }));
+  // a demanda: el botón y la palabra del menú
+  $('#decir').addEventListener('click', kifflom);
+  document.querySelector('.menu a[href="#kifflom"]').addEventListener('click', kifflom);
+
   /* pie de foto del rostro: cambia cada pocos segundos, como en el original */
   const caps = [
     'Posible descendiente de Kraff.',
@@ -74,6 +85,7 @@
     if (qi >= QS.length) {
       const max = QS.length * 3;
       const [name, txt] = RANKS[score === max ? 3 : Math.min(2, Math.floor(score / max * 4))];
+      kifflom();
       quiz.innerHTML = `<div class="res"><div class="step">tu grado</div><div class="big"></div><p></p>
         <a class="pill green" href="#contacto">PRESTAR EL JURAMENTO</a><button class="again" id="again">Repetir la prueba</button></div>`;
       $('.big', quiz).textContent = name; $('p', quiz).textContent = txt;
@@ -96,11 +108,11 @@
   /* solicitud: abre el formulario de GitHub ya relleno; la cuenta que lo envía es la que se registra */
   $('#apply').addEventListener('submit', e => {
     e.preventDefault();
+    kifflom();
     const user = $('#u').value.trim().replace(/^@/, ''), why = $('#m').value.trim();
     const q = new URLSearchParams({ template: 'solicitud.yml', title: `juramento de ingreso: @${user}`, usuario: user });
     if (why) q.set('motivo', why);
     window.open(`https://github.com/${REPO}/issues/new?${q}`, '_blank', 'noopener');
   });
 
-  $('#yr').textContent = new Date().getFullYear();
 })();

@@ -109,3 +109,5 @@ form .pill{justify-self:start}
 .check .row input{margin-top:0}
 .mini{font-family:'Cinzel',serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;background:#fff;border:1px solid var(--line);color:#5a6270;padding:0 14px;cursor:pointer;border-radius:7px}
 .mini:hover{border-color:var(--steel);color:var(--steel)}
+
+.say{padding:8px 14px;margin:0 0 10px}
