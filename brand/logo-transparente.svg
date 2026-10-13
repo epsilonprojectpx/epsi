@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="epsi">
+<title>epsi</title>
+<defs><clipPath id="c"><rect width="512" height="512" rx="0"/></clipPath></defs>
+
+<circle cx="256" cy="256" r="168" fill="#d8c55a"/>
+<circle cx="256" cy="256" r="150" fill="#1f4f82"/>
+<circle cx="256" cy="256" r="136" fill="none" stroke="#87a5d6" stroke-width="3" stroke-dasharray="2 9" stroke-linecap="round"/>
+<path d="M326 186C290 156 214 160 212 222C211 246 228 256 254 256L284 256M254 256C228 256 211 266 212 290C214 352 290 356 326 326" fill="none" stroke="#ffffff" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

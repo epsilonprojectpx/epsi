@@ -1,25 +1,37 @@
+<p align="center">
+  <img src="brand/social-preview.png" alt="EPSI, hermandad de managua, nicaragua" width="100%">
+</p>
+
 # epsi
 
-hermandad de github desde managua, nicaragua. sitio estático, sin dependencias salvo dos fuentes de google.
+hermandad de código en github, con sede en managua, nicaragua. se entra por solicitud, se crece con contribuciones y se queda en el registro.
 
-![portada](assets/hero.png)
+**web:** https://epsilonprojectpx.github.io/epsi/ · **organización:** https://github.com/epsilonprojectpx
 
-![página completa](assets/pagina.png)
+![portada de la web](assets/hero.png)
 
-## organización
+## unirse
 
-https://github.com/epsilonprojectpx
+1. abre el [formulario](https://epsilonprojectpx.github.io/epsi/#contacto) de la web; se crea una solicitud pública desde tu cuenta.
+2. una acción valida que el usuario exista y que coincida con quien la abre.
+3. un hermano-padre la aprueba con la etiqueta `aprobado`. recibes tu número, tu insignia y tu lugar en el registro.
 
-## ver
+al ser aprobado, el comentario de bienvenida trae el código de tu insignia para el readme de tu perfil.
 
-https://epsilonprojectpx.github.io/epsi/
+## grados
 
-## cómo funciona el registro
+| grado | cómo se sube |
+|---|---|
+| I buscador | al ser aprobado |
+| II devoto | un pull request fusionado |
+| III iluminado | tres pull requests fusionados |
+| IV hermano-padre | lo concede un hermano-padre |
 
-1. la persona abre una solicitud con el formulario del sitio (issue público, desde su propia cuenta).
-2. una acción valida que el usuario exista y que coincida con quien abre la solicitud.
-3. un hermano-padre pone la etiqueta `aprobado`; la acción asigna el número, lo guarda en `data/miembros.json` y cierra la solicitud.
-4. el sitio lee ese archivo y muestra el registro.
+los ascensos de I a III se calculan solos cada semana.
+
+## identidad
+
+emblema, paleta, tipografía y voz están en [`brand/`](brand/README.md).
 
 ## local
 

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="epsi">
+<title>epsi</title>
+<defs><clipPath id="c"><rect width="512" height="512" rx="0"/></clipPath></defs>
+<rect width="512" height="512" fill="#87a5d6"/><g fill="#a9c3e6"><path d="M256 256L675.1 228.5L675.1 283.5Z"/><path d="M256 256L667.9 337.9L653.7 391.0Z"/><path d="M256 256L632.7 441.8L605.2 489.3Z"/><path d="M256 256L571.8 532.9L532.9 571.8Z"/><path d="M256 256L489.3 605.2L441.8 632.7Z"/><path d="M256 256L391.0 653.7L337.9 667.9Z"/><path d="M256 256L283.5 675.1L228.5 675.1Z"/><path d="M256 256L174.1 667.9L121.0 653.7Z"/><path d="M256 256L70.2 632.7L22.7 605.2Z"/><path d="M256 256L-20.9 571.8L-59.8 532.9Z"/><path d="M256 256L-93.2 489.3L-120.7 441.8Z"/><path d="M256 256L-141.7 391.0L-155.9 337.9Z"/><path d="M256 256L-163.1 283.5L-163.1 228.5Z"/><path d="M256 256L-155.9 174.1L-141.7 121.0Z"/><path d="M256 256L-120.7 70.2L-93.2 22.7Z"/><path d="M256 256L-59.8 -20.9L-20.9 -59.8Z"/><path d="M256 256L22.7 -93.2L70.2 -120.7Z"/><path d="M256 256L121.0 -141.7L174.1 -155.9Z"/><path d="M256 256L228.5 -163.1L283.5 -163.1Z"/><path d="M256 256L337.9 -155.9L391.0 -141.7Z"/><path d="M256 256L441.8 -120.7L489.3 -93.2Z"/><path d="M256 256L532.9 -59.8L571.8 -20.9Z"/><path d="M256 256L605.2 22.7L632.7 70.2Z"/><path d="M256 256L653.7 121.0L667.9 174.1Z"/></g>
+<circle cx="256" cy="256" r="168" fill="#d8c55a"/>
+<circle cx="256" cy="256" r="150" fill="#1f4f82"/>
+<circle cx="256" cy="256" r="136" fill="none" stroke="#87a5d6" stroke-width="3" stroke-dasharray="2 9" stroke-linecap="round"/>
+<path d="M326 186C290 156 214 160 212 222C211 246 228 256 254 256L284 256M254 256C228 256 211 266 212 290C214 352 290 356 326 326" fill="none" stroke="#ffffff" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

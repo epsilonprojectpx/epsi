@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+body{width:1280px;height:640px;overflow:hidden;position:relative;background:#87a5d6;font-family:'EB Garamond',serif}
+.rays{position:absolute;inset:-60%;background:repeating-conic-gradient(from 0deg at 50% 50%,#f4f9fd 0 3deg,#c4daf0 3deg 6deg)}
+.vig{position:absolute;inset:0;background:radial-gradient(circle at 36% 48%,transparent 30%,rgba(31,79,130,.38))}
+.left{position:absolute;left:84px;top:78px;width:660px}
+.mark{width:150px;height:150px;border-radius:30px;box-shadow:0 10px 30px rgba(18,48,79,.35)}
+.t{font-family:'Cinzel',serif;font-weight:900;font-size:232px;line-height:.92;color:#fff;letter-spacing:.02em;margin-top:6px;
+ -webkit-text-stroke:5px #4d86e6;paint-order:stroke fill;text-shadow:0 0 34px rgba(77,134,230,.85)}
+.s{font-family:'Cinzel',serif;font-weight:700;font-size:25px;letter-spacing:.13em;white-space:nowrap;color:#12304f;text-transform:uppercase;margin-top:12px;text-shadow:0 0 14px #fff,0 0 4px #fff}
+.photo{position:absolute;right:-10px;bottom:70px;height:560px;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 16%);mask-image:linear-gradient(to right,transparent 0,#000 16%);filter:drop-shadow(0 10px 22px rgba(18,48,79,.45))}
+.band{position:absolute;left:0;right:0;bottom:0;height:70px;background:linear-gradient(#6b84a6,#4f6a8f);border-top:4px solid #8aa0bf;display:flex;align-items:center;justify-content:center;
+ font-family:'Cinzel',serif;font-weight:700;font-size:27px;letter-spacing:.07em;color:#e8eef7;text-shadow:0 2px 0 rgba(0,0,0,.35)}
+</style></head><body>
+<div class="rays"></div><div class="vig"></div>
+<div class="left">
+  <img class="mark" src="logo.svg" alt="">
+  <div class="t">EPSI</div>
+  <div class="s">Hermandad · Managua, Nicaragua</div>
+</div>
+<img class="photo" src="../assets/miembro.webp" alt="">
+<div class="band">MUCHOS HAN SIDO LLAMADOS. CINCO HAN SIDO ELEGIDOS.</div>
+</body></html>
