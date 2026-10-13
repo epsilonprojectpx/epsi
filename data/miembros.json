@@ -6,7 +6,15 @@
       "grado": "Hermano-Padre",
       "fecha": "2026-10-13",
       "solicitud": 2,
-      "area": "Fundación"
+      "area": "Fundación",
+      "diplomas": [
+        {
+          "id": "mil-contribuciones",
+          "numero": 1,
+          "fecha": "2026-10-13",
+          "valor": 1695
+        }
+      ]
     },
     {
       "numero": 2,
@@ -14,7 +22,8 @@
       "grado": "Buscador",
       "fecha": "2026-10-13",
       "solicitud": 3,
-      "area": "General"
+      "area": "General",
+      "diplomas": []
     }
   ]
 }
