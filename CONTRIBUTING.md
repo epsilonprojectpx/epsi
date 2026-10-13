@@ -1,20 +1,28 @@
-# cómo contribuir a epsi
+# Cómo contribuir a EPSI
 
-kifflom. aquí se crece contribuyendo.
+Gracias por querer aportar. Cada pull request fusionado cuenta para tu grado.
 
-## primera vez
+## Antes de empezar
 
-abre una solicitud desde la [web](https://epsilonprojectpx.github.io/epsi/#contacto). cuando un hermano-padre la apruebe quedas en el registro.
+1. Lee el [código de conducta](CODE_OF_CONDUCT.md) y la [gobernanza](GOVERNANCE.md).
+2. Si aún no eres miembro, abre una [solicitud de ingreso](https://github.com/epsilonprojectpx/epsi/issues/new?template=solicitud.yml).
 
-## con código
+## Flujo de trabajo
 
-1. haz un fork o crea una rama.
-2. cambios pequeños, un commit por idea, con prefijo: `feat:`, `fix:`, `docs:`, `chore:`.
-3. abre un pull request. cada pull request fusionado cuenta para tu grado.
+1. Abre un issue con el formulario que corresponda (propuesta o error), o comenta uno existente.
+2. Crea una rama desde `main` o haz un fork.
+3. Haz cambios pequeños, un commit por idea, con prefijo: `feat:`, `fix:`, `docs:`, `chore:`.
+4. Abre un pull request y rellena la plantilla.
+5. Un Hermano-Padre revisa y fusiona.
 
-## reglas del repo
+## Reglas del proyecto
 
-- el diseño sigue la guía de [`brand/`](brand/README.md): paleta, tipografías y voz.
-- la web es estática: html, css y js sin dependencias. no añadas frameworks.
-- no subas datos personales. el registro solo guarda el usuario de github.
-- `data/miembros.json` y `badges/` los mantiene la acción; no los edites a mano.
+- La web es estática: HTML, CSS y JavaScript sin dependencias ni frameworks.
+- El diseño sigue la [guía de identidad](brand/README.md): paleta, tipografías y voz.
+- No subas datos personales. El registro solo guarda el usuario de GitHub.
+- `data/miembros.json` y `badges/` los mantiene la automatización; no se editan a mano.
+- Los textos de la web mantienen la voz de la hermandad.
+
+## Dónde preguntar
+
+En [Discusiones](https://github.com/epsilonprojectpx/epsi/discussions). Los issues son para trabajo concreto.
