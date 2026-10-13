@@ -7,7 +7,8 @@ const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(
 export function insignia({ numero, grado }) {
   const derecha = `HERMANO N.° ${numero} · ${grado}`.toUpperCase();
   const wl = 56;
-  const wr = Math.round(derecha.length * 7.3 + 18);
+  const tr = Math.round(derecha.length * 8.2);
+  const wr = tr + 24;
   const w = wl + wr;
   const etiqueta = `epsi: hermano N.° ${numero}, grado ${grado}`;
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -15,9 +16,9 @@ export function insignia({ numero, grado }) {
 <title>${esc(etiqueta)}</title>
 <rect width="${w}" height="24" rx="4" fill="#87a5d6"/>
 <path d="M4 0h${wl - 4}v24H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4z" fill="#1f4f82"/>
-<g font-family="Georgia,'Times New Roman',serif" font-size="11" font-weight="700" text-anchor="middle" letter-spacing="1">
-<text x="${wl / 2}" y="16" fill="#ffffff">EPSI</text>
-<text x="${wl + wr / 2}" y="16" fill="#12304f">${esc(derecha)}</text>
+<g font-family="Georgia,'Times New Roman',serif" font-size="11" font-weight="700" text-anchor="middle" >
+<text x="${wl / 2}" y="16" fill="#ffffff" textLength="34" lengthAdjust="spacingAndGlyphs">EPSI</text>
+<text x="${wl + wr / 2}" y="16" fill="#12304f" textLength="${tr}" lengthAdjust="spacingAndGlyphs">${esc(derecha)}</text>
 </g>
 </svg>
 `;
