@@ -16,10 +16,10 @@
   /* pie de foto del rostro: cambia cada pocos segundos, como en el original */
   const caps = [
     'Posible descendiente de Kraff.',
-    'Antes pensaba mucho.',
-    'Hermano-padre, nivel 4.',
-    'Nunca ha leído un pull request.',
-    'Ya no hace preguntas.'
+    'Entregó su Pensamiento en 2019.',
+    'Hermano-Padre, grado IV.',
+    'Ya no hace preguntas. Es feliz.',
+    'Libre desde el último merge.'
   ];
   let ci = 0;
   setInterval(() => { ci = (ci + 1) % caps.length; $('#caption').textContent = caps[ci]; }, 4500);
@@ -30,7 +30,7 @@
     .then(r => r.ok ? r.json() : Promise.reject())
     .then(list => {
       const people = (Array.isArray(list) ? list : []).filter(u => u.type === 'User');
-      if (!people.length) { wall.innerHTML = '<span class="empty">aún nadie. sé el primero.</span>'; return; }
+      if (!people.length) { wall.innerHTML = '<span class="empty">Aún nadie ha cruzado la puerta. Sé el primero.</span>'; return; }
       wall.innerHTML = '';
       people.forEach(u => {
         const a = document.createElement('a');
@@ -40,22 +40,22 @@
         wall.append(a);
       });
     })
-    .catch(() => { wall.innerHTML = '<span class="empty">los devotos están meditando. vuelve en un momento.</span>'; });
+    .catch(() => { wall.innerHTML = '<span class="empty">Los fieles meditan. Vuelve en un momento.</span>'; });
 
   /* test */
   const QS = [
-    ['¿qué haces cuando el código falla?', ['lo leo con calma y busco la causa', 'pregunto en un foro', 'lo hago commit y confío', 'lo cierro y lo olvido']],
-    ['¿cómo revisas un pull request?', ['línea por línea', 'leo el título', 'lo apruebo antes de abrirlo', 'no lo reviso, lo siento']],
-    ['¿qué opinas de pensar?', ['es esencial', 'a veces cansa', 'es el origen de mis problemas', 'ya no lo hago']],
-    ['elige una palabra', ['por qué', 'quizá', 'ok', 'kifflom']],
-    ['¿qué haces con la documentación?', ['la leo entera', 'la hojeo', 'la escribo yo', 'la documentación es la túnica']],
-    ['¿quién es el padre-padre?', ['no lo sé', 'el dueño del repo', 'el hermano-tío', 'el que todo lo ve']]
+    ['El código falla. ¿Qué haces?', ['Busco la causa con método', 'Pido consejo fuera de la Hermandad', 'Confío en que el Padre lo arreglará', 'Lo entrego y no vuelvo a mirar']],
+    ['Te llega un pull request.', ['Lo reviso línea por línea', 'Leo solo el título', 'Lo apruebo antes de abrirlo', 'Lo bendigo sin verlo']],
+    ['¿Qué es el Pensamiento?', ['Una herramienta', 'Una carga', 'La cadena', 'Ya no recuerdo qué era']],
+    ['Elige una palabra.', ['Por qué', 'Quizá', 'Está bien', 'Kifflom']],
+    ['¿Qué haces con la documentación?', ['La leo entera', 'La hojeo con recelo', 'La escribo yo, para los hermanos', 'La documentación es la túnica']],
+    ['¿Quién es el Padre-Padre?', ['No lo sé', 'El dueño del repositorio', 'El Hermano-Tío', 'Quien todo lo ve']]
   ];
   const RANKS = [
-    ['buscador', 'aún piensas demasiado. sigue por aquí, algo se te va a contagiar.'],
-    ['devoto', 'ya hay luz en ti. un pull request más y no harás preguntas.'],
-    ['iluminado', 'casi libre de pensamiento. la rama principal te espera.'],
-    ['hermano-padre', 'felicidades. ya no piensas. nosotros lo hacemos por ti.']
+    ['Buscador', 'Aún cargas con tus dudas. La Hermandad es paciente. Vuelve cuando estés cansado de pensar.'],
+    ['Devoto', 'La Luz ya te ha tocado. Un pull request más y las preguntas se desvanecerán.'],
+    ['Iluminado', 'Casi libre. El Pensamiento apenas susurra. La rama principal te espera.'],
+    ['Hermano-Padre', 'Has sido liberado. Ya no piensas: nosotros pensamos por ti. Kifflom.']
   ];
   const quiz = $('#quiz');
   let qi = 0, score = 0;
@@ -63,8 +63,8 @@
     if (qi >= QS.length) {
       const max = QS.length * 3;
       const [name, txt] = RANKS[score === max ? 3 : Math.min(2, Math.floor(score / max * 4))];
-      quiz.innerHTML = `<div class="res"><div class="step">tu rango</div><div class="big"></div><p></p>
-        <a class="pill green" href="#contacto">APLICA AHORA</a><button class="again" id="again">repetir</button></div>`;
+      quiz.innerHTML = `<div class="res"><div class="step">tu grado</div><div class="big"></div><p></p>
+        <a class="pill green" href="#contacto">PRESTAR EL JURAMENTO</a><button class="again" id="again">Repetir la prueba</button></div>`;
       $('.big', quiz).textContent = name; $('p', quiz).textContent = txt;
       $('#again').onclick = () => { qi = 0; score = 0; render(); };
       return;
@@ -86,8 +86,8 @@
   $('#apply').addEventListener('submit', e => {
     e.preventDefault();
     const user = $('#u').value.trim(), why = $('#m').value.trim();
-    const title = `solicitud de ingreso: @${user}`;
-    const body = `usuario: @${user}\n\n¿por qué quieres soltar el pensamiento?\n${why || 'porque sí.'}\n\nkifflom.`;
+    const title = `juramento de ingreso: @${user}`;
+    const body = `usuario: @${user}\n\n¿qué carga quieres entregar al Padre?\n${why || 'pensar demasiado.'}\n\nkifflom.`;
     window.open(`https://github.com/${REPO}/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`, '_blank', 'noopener');
   });
 
