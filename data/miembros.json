@@ -1,3 +1,11 @@
 {
-  "miembros": []
+  "miembros": [
+    {
+      "numero": 1,
+      "usuario": "kisnner26",
+      "grado": "Buscador",
+      "fecha": "2026-10-13",
+      "solicitud": 2
+    }
+  ]
 }
