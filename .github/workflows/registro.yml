@@ -1,0 +1,99 @@
+name: registro
+
+on:
+  issues:
+    types: [opened, labeled]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: registro
+  cancel-in-progress: false
+
+jobs:
+  recibir:
+    if: github.event.action == 'opened' && contains(github.event.issue.labels.*.name, 'solicitud')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const issue = context.payload.issue;
+            const say = body => github.rest.issues.createComment({ ...context.repo, issue_number: issue.number, body });
+            const label = l => github.rest.issues.addLabels({ ...context.repo, issue_number: issue.number, labels: [l] });
+
+            const m = (issue.body || '').match(/###\s*Usuario de GitHub\s*\n+\s*@?([A-Za-z0-9-]{1,39})/i);
+            if (!m) { await label('invalido'); return say('No pude leer tu usuario. Abre la solicitud con el formulario.'); }
+            const pedido = m[1];
+
+            if (pedido.toLowerCase() !== issue.user.login.toLowerCase()) {
+              await label('invalido');
+              return say(`La solicitud debe abrirla la misma cuenta que se registra. Abierta por @${issue.user.login}, pide registrar a @${pedido}.`);
+            }
+            const reg = JSON.parse(fs.readFileSync('data/miembros.json', 'utf8'));
+            const ya = reg.miembros.find(x => x.usuario.toLowerCase() === pedido.toLowerCase());
+            if (ya) {
+              await label('registrado');
+              await say(`Ya eres hermano N.° ${ya.numero}. Kifflom.`);
+              return github.rest.issues.update({ ...context.repo, issue_number: issue.number, state: 'closed' });
+            }
+            await label('pendiente');
+            await say(`Solicitud recibida, @${pedido}. Un Hermano-Padre la revisará. Cuando sea aprobada recibirás tu número y aparecerás en el registro de la web.\n\nKifflom.`);
+
+  aprobar:
+    if: github.event.action == 'labeled' && github.event.label.name == 'aprobado'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const issue = context.payload.issue;
+            const say = body => github.rest.issues.createComment({ ...context.repo, issue_number: issue.number, body });
+            const close = () => github.rest.issues.update({ ...context.repo, issue_number: issue.number, state: 'closed' });
+
+            if (!issue.labels.some(l => l.name === 'solicitud')) return;
+            const m = (issue.body || '').match(/###\s*Usuario de GitHub\s*\n+\s*@?([A-Za-z0-9-]{1,39})/i);
+            if (!m) return say('No hay usuario que registrar.');
+            if (m[1].toLowerCase() !== issue.user.login.toLowerCase()) return say('El usuario no coincide con quien abrió la solicitud. No se registra.');
+
+            let perfil;
+            try { perfil = (await github.rest.users.getByUsername({ username: m[1] })).data; }
+            catch (e) { return say(`El usuario @${m[1]} no existe en GitHub.`); }
+            if (perfil.type !== 'User') return say('Solo cuentas de persona.');
+
+            const ruta = 'data/miembros.json';
+            const reg = JSON.parse(fs.readFileSync(ruta, 'utf8'));
+            const ya = reg.miembros.find(x => x.usuario.toLowerCase() === perfil.login.toLowerCase());
+            if (ya) { await say(`@${perfil.login} ya estaba registrado como hermano N.° ${ya.numero}.`); return close(); }
+
+            const numero = reg.miembros.reduce((a, x) => Math.max(a, x.numero), 0) + 1;
+            reg.miembros.push({ numero, usuario: perfil.login, grado: 'Buscador', fecha: new Date().toISOString().slice(0, 10), solicitud: issue.number });
+            fs.writeFileSync(ruta, JSON.stringify(reg, null, 2) + '\n');
+            core.exportVariable('NUEVO', `${numero}:${perfil.login}`);
+
+      - name: guardar registro
+        if: env.NUEVO != ''
+        run: |
+          git config user.name "epsi[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/miembros.json
+          git commit -m "registro: hermano N.° ${NUEVO%%:*} (@${NUEVO#*:})"
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+      - name: avisar
+        if: env.NUEVO != ''
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const [numero, usuario] = process.env.NUEVO.split(':');
+            await github.rest.issues.createComment({ ...context.repo, issue_number: context.payload.issue.number,
+              body: `Bienvenido, @${usuario}. Eres el hermano N.° ${numero}, grado Buscador. Ya apareces en el registro de la web.\n\nKifflom.` });
+            await github.rest.issues.addLabels({ ...context.repo, issue_number: context.payload.issue.number, labels: ['registrado'] });
+            await github.rest.issues.update({ ...context.repo, issue_number: context.payload.issue.number, state: 'closed' });

@@ -1,0 +1,34 @@
+name: Solicitud de ingreso
+description: Pide entrar a la hermandad epsi (Managua, Nicaragua)
+title: "juramento de ingreso: @usuario"
+labels: ["solicitud"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Esta solicitud es **pública**. Escribe solo tu usuario de GitHub; no pongas teléfono, correo ni datos personales.
+        La solicitud debe abrirla la misma cuenta que quiere registrarse.
+  - type: input
+    id: usuario
+    attributes:
+      label: Usuario de GitHub
+      description: Sin la arroba.
+      placeholder: kisnner26
+    validations:
+      required: true
+  - type: textarea
+    id: motivo
+    attributes:
+      label: ¿Qué carga quieres entregar al Padre?
+      placeholder: pensar demasiado.
+    validations:
+      required: false
+  - type: checkboxes
+    id: acuerdo
+    attributes:
+      label: Entiendo que
+      options:
+        - label: mi usuario aparecerá en el registro público de hermanos
+          required: true
+        - label: epsi es un proyecto de humor, no una organización real
+          required: true
