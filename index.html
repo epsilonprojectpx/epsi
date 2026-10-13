@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EPSI</title>
-<meta name="description" content="epsi: equipo de GitHub inspirado en el Programa Epsilon de GTA V. Muchos han sido llamados. Cinco han sido elegidos.">
+<meta name="description" content="epsi: hermandad de GitHub desde Managua, Nicaragua, inspirada en el Programa Epsilon de GTA V. Muchos han sido llamados. Cinco han sido elegidos.">
 <meta property="og:title" content="EPSI — kifflom">
 <meta property="og:description" content="Muchos han sido llamados. Cinco han sido elegidos.">
 <meta property="og:image" content="https://kisnner26.github.io/epsi/assets/hero.png">
@@ -22,14 +22,14 @@
   <header class="head">
     <svg class="glyph" viewBox="0 0 64 64" aria-hidden="true"><path d="M12 8h40v7H35v11h14v7H35v23h-6V33H15v-7h14V15H12z" fill="#2a2f3a"/></svg>
     <div class="word">epsi</div>
-    <div class="tag">la hermandad · los santos</div>
+    <div class="tag">la hermandad · managua, nicaragua</div>
   </header>
 
   <nav class="menu" aria-label="principal">
     <a href="#unirse">únete</a>
     <a href="#dinero">la ofrenda</a>
     <a href="#kifflom">kifflom!</a>
-    <a href="#testimonios">testimonios</a>
+    <a href="#testimonios">el registro</a>
     <a href="#test">la prueba</a>
     <a href="#contacto">el juramento</a>
   </nav>
@@ -67,7 +67,7 @@
         <img class="man" src="assets/miembro.webp" alt="Miembro de la hermandad señalando al visitante" width="1000" height="1157" fetchpriority="high">
         </div>
         <div class="b1">MUCHOS HAN SIDO LLAMADOS.<br>CINCO HAN SIDO ELEGIDOS.</div>
-        <div class="b2">ESTAMOS PREPARANDO A LOS BUSCADORES DE LA VERDAD PARA SU INICIACIÓN EN EL CENTRO DE APRENDIZAJE DE LOS SANTOS. LA PUERTA ESTÁ ABIERTA.</div>
+        <div class="b2">ESTAMOS PREPARANDO A LOS BUSCADORES DE LA VERDAD PARA SU INICIACIÓN EN EL CENTRO DE APRENDIZAJE DE MANAGUA, NICARAGUA. LA PUERTA ESTÁ ABIERTA.</div>
       </div>
 
       <h2 class="h" id="kifflom">kifflom!</h2>
@@ -90,23 +90,28 @@
         <tr><th>IV</th><td><b>Hermano-Padre</b><br>Guía, aprueba y bendice. Su palabra es la rama principal.</td><td>mantenedor</td></tr>
       </table>
 
-      <h2 class="h" id="testimonios">testimonios</h2>
-      <p class="lead">Ellos ya fueron liberados:</p>
+      <h2 class="h" id="testimonios">el registro de hermanos</h2>
+      <p class="lead" id="count">Ellos ya fueron liberados:</p>
       <div class="wall" id="wall"><span class="empty">Buscando a los fieles…</span></div>
+      <form id="check" class="check">
+        <label for="q">¿ya eres hermano? consulta tu número</label>
+        <div class="row"><input id="q" maxlength="39" pattern="[A-Za-z0-9\-]+" placeholder="tu usuario de github" required><button class="mini" type="submit">consultar</button></div>
+        <p class="small" id="checkout" aria-live="polite"></p>
+      </form>
 
       <h2 class="h" id="test">la prueba de pureza</h2>
       <p class="lead">Responde sin pensar. Pensar te retrasa.</p>
       <div class="quiz" id="quiz" aria-live="polite"></div>
 
       <h2 class="h" id="contacto">el juramento</h2>
-      <p class="lead">Quien jura, queda libre. Escribe tu nombre y entrega tu carga.</p>
+      <p class="lead">Quien jura, queda libre. La solicitud se abre en GitHub desde tu propia cuenta, es pública y la revisa un Hermano-Padre. Al ser aprobada recibes tu número y apareces en el registro.</p>
       <form id="apply">
-        <label for="u">tu nombre en github</label>
-        <input id="u" required maxlength="39" pattern="[A-Za-z0-9-]+" placeholder="kisnner26">
+        <label for="u">tu usuario de github</label>
+        <input id="u" required maxlength="39" pattern="[A-Za-z0-9\-]+" placeholder="kisnner26">
         <label for="m">¿qué carga quieres entregar al Padre?</label>
         <textarea id="m" rows="3" maxlength="400" placeholder="pensar demasiado."></textarea>
         <button class="pill green sub" type="submit">ENTREGO MI PENSAMIENTO<b>KIFFLOM.</b></button>
-        <p class="small">Se abrirá tu solicitud en GitHub. Enviarla es decisión tuya, por ahora.</p>
+        <p class="small">Necesitas una cuenta de GitHub. No pongas teléfono ni correo: la solicitud es pública.</p>
       </form>
 
     </main>

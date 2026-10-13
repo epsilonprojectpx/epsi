@@ -24,23 +24,34 @@
   let ci = 0;
   setInterval(() => { ci = (ci + 1) % caps.length; $('#caption').textContent = caps[ci]; }, 4500);
 
-  /* testimonios: contribuidores reales del repo */
+  /* registro de hermanos: sale de data/miembros.json, que mantiene la acción de GitHub */
   const wall = $('#wall');
-  fetch(`https://api.github.com/repos/${REPO}/contributors?per_page=40`)
+  let miembros = [];
+  fetch('data/miembros.json', { cache: 'no-cache' })
     .then(r => r.ok ? r.json() : Promise.reject())
-    .then(list => {
-      const people = (Array.isArray(list) ? list : []).filter(u => u.type === 'User');
-      if (!people.length) { wall.innerHTML = '<span class="empty">Aún nadie ha cruzado la puerta. Sé el primero.</span>'; return; }
+    .then(d => {
+      miembros = d.miembros || [];
+      $('#count').textContent = `Hermanos registrados: ${miembros.length}. Ellos ya fueron liberados:`;
       wall.innerHTML = '';
-      people.forEach(u => {
+      miembros.forEach(m => {
         const a = document.createElement('a');
-        a.href = u.html_url; a.target = '_blank'; a.rel = 'noopener';
-        const img = new Image(); img.src = u.avatar_url + '&s=140'; img.alt = ''; img.loading = 'lazy';
-        a.append(img, document.createTextNode(u.login));
+        a.href = `https://github.com/${m.usuario}`; a.target = '_blank'; a.rel = 'noopener';
+        const img = new Image(); img.src = `https://github.com/${m.usuario}.png?size=140`; img.alt = ''; img.loading = 'lazy';
+        const n = document.createElement('b'); n.textContent = `N.° ${m.numero}`;
+        a.append(img, n, document.createTextNode(m.usuario));
         wall.append(a);
       });
     })
-    .catch(() => { wall.innerHTML = '<span class="empty">Los fieles meditan. Vuelve en un momento.</span>'; });
+    .catch(() => { wall.innerHTML = '<span class="empty">El registro no responde. Vuelve en un momento.</span>'; });
+
+  $('#check').addEventListener('submit', e => {
+    e.preventDefault();
+    const u = $('#q').value.trim().toLowerCase();
+    const m = miembros.find(x => x.usuario.toLowerCase() === u);
+    $('#checkout').textContent = m
+      ? `@${m.usuario}: hermano N.° ${m.numero}, grado ${m.grado}, desde ${m.fecha}. Kifflom.`
+      : `@${u} no está en el registro. Si ya enviaste tu juramento, espera la aprobación de un Hermano-Padre.`;
+  });
 
   /* test */
   const QS = [
@@ -82,13 +93,13 @@
   };
   render();
 
-  /* solicitud: abre un issue prellenado, el usuario decide enviarlo */
+  /* solicitud: abre el formulario de GitHub ya relleno; la cuenta que lo envía es la que se registra */
   $('#apply').addEventListener('submit', e => {
     e.preventDefault();
-    const user = $('#u').value.trim(), why = $('#m').value.trim();
-    const title = `juramento de ingreso: @${user}`;
-    const body = `usuario: @${user}\n\n¿qué carga quieres entregar al Padre?\n${why || 'pensar demasiado.'}\n\nkifflom.`;
-    window.open(`https://github.com/${REPO}/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`, '_blank', 'noopener');
+    const user = $('#u').value.trim().replace(/^@/, ''), why = $('#m').value.trim();
+    const q = new URLSearchParams({ template: 'solicitud.yml', title: `juramento de ingreso: @${user}`, usuario: user });
+    if (why) q.set('motivo', why);
+    window.open(`https://github.com/${REPO}/issues/new?${q}`, '_blank', 'noopener');
   });
 
   $('#yr').textContent = new Date().getFullYear();
