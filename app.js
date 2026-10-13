@@ -43,11 +43,27 @@
   /* registro de hermanos: sale de data/miembros.json, que mantiene la acción de GitHub */
   const wall = $('#wall');
   let miembros = [];
+  let catalogo = [];
+  fetch('data/diplomas.json', { cache: 'no-cache' }).then(r => r.json()).then(d => { catalogo = d.diplomas || []; }).catch(() => {});
   fetch('data/miembros.json', { cache: 'no-cache' })
     .then(r => r.ok ? r.json() : Promise.reject())
     .then(d => {
       miembros = d.miembros || [];
       $('#count').textContent = `Hermanos registrados: ${miembros.length}. Ellos ya fueron liberados:`;
+      const dl = $('#diplomaslist');
+      const con = miembros.filter(m => (m.diplomas || []).length);
+      if (!con.length) dl.textContent = 'Diplomas otorgados: aún ninguno. El primero está por ganarse.';
+      else {
+        dl.textContent = 'Diplomas otorgados: ';
+        con.forEach((m, i) => {
+          m.diplomas.forEach(dp => {
+            const l = document.createElement('a');
+            l.href = `diploma.html?u=${encodeURIComponent(m.usuario)}&d=${encodeURIComponent(dp.id)}`;
+            l.textContent = `@${m.usuario}`;
+            dl.append(l, document.createTextNode(i < con.length - 1 ? ', ' : '.'));
+          });
+        });
+      }
       wall.innerHTML = '';
       miembros.forEach(m => {
         const a = document.createElement('a');
@@ -55,6 +71,7 @@
         const img = new Image(); img.src = `https://github.com/${m.usuario}.png?size=140`; img.alt = ''; img.loading = 'lazy';
         const n = document.createElement('b'); n.textContent = `N.° ${m.numero}`;
         a.append(img, n, document.createTextNode(m.usuario));
+        if ((m.diplomas || []).length) { const t = document.createElement('i'); t.className = 'dtag'; t.textContent = 'diploma'; a.append(t); }
         wall.append(a);
       });
     })
@@ -104,6 +121,20 @@
     $('.mini', card).addEventListener('click', ev => {
       navigator.clipboard.writeText(md).then(() => { ev.target.textContent = 'copiado'; }, () => { $('textarea', card).select(); });
     });
+    if ((m.diplomas || []).length) {
+      const box = document.createElement('div');
+      box.className = 'snip';
+      box.innerHTML = '<div class="k">diplomas de kraft</div>';
+      m.diplomas.forEach(dp => {
+        const def = catalogo.find(c => c.id === dp.id);
+        const l = document.createElement('a');
+        l.className = 'dlink';
+        l.href = `diploma.html?u=${encodeURIComponent(m.usuario)}&d=${encodeURIComponent(dp.id)}`;
+        l.textContent = `${def ? def.nombre : dp.id} · N.° ${String(dp.numero).padStart(4, '0')}`;
+        box.append(l);
+      });
+      card.append(box);
+    }
     out.append(card);
     kifflom();
   });

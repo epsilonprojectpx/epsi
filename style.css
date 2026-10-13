@@ -178,3 +178,12 @@ form .pill{justify-self:start}
 .docs a,.small a{color:var(--steel)}
 select{width:100%;font:inherit;padding:9px 11px;border:1px solid #98a4b8;border-radius:7px;background:#fff;color:var(--ink)}
 @media(max-width:620px){select{padding:12px;font-size:17px}}
+
+/* diplomas */
+.diploma-card{border:3px double var(--steel);border-radius:10px;padding:14px 16px;background:linear-gradient(#fbfdff,#eaf1fb);margin-bottom:10px}
+.diploma-card .k{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.22em;color:var(--steel);text-transform:uppercase}
+.diploma-card h3{font-family:'Cinzel',serif;font-weight:900;font-size:20px;color:#2a2f3a;text-transform:uppercase;line-height:1.1;margin:2px 0 6px}
+.diploma-card ul{margin:8px 0 0 20px;font-size:16px}
+.diploma-card li{margin-bottom:4px}
+.dtag{display:block;font-style:normal;font-size:10px;letter-spacing:.12em;text-transform:uppercase;background:var(--gold);color:#12304f;border-radius:3px;margin:4px auto 0;padding:1px 4px;width:max-content}
+.dlink{display:block;margin-top:6px;font-family:'Cinzel',serif;font-size:13px;letter-spacing:.04em;color:var(--navy);text-decoration:underline}
