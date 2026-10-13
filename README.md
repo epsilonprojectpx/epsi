@@ -18,6 +18,14 @@ hermandad de código en github, con sede en managua, nicaragua. se entra por sol
 
 al ser aprobado, el comentario de bienvenida trae el código de tu insignia para el readme de tu perfil.
 
+## en tu perfil
+
+todo hermano debe llevar epsi en su perfil de github:
+
+1. acepta la invitación a la [organización](https://github.com/epsilonprojectpx).
+2. pon tu membresía como pública en [people](https://github.com/orgs/epsilonprojectpx/people).
+3. escribe `@epsilonprojectpx` en el campo company de tu [perfil](https://github.com/settings/profile).
+
 ## grados
 
 | grado | cómo se sube |
