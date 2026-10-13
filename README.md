@@ -39,6 +39,10 @@ Hermandad de código en GitHub, con sede en Managua, Nicaragua. Se entra por sol
 
 Los grados I a III se recalculan solos cada semana.
 
+## Diplomas
+
+Kraft recompensa a los hermanos con diplomas de reconocimiento. El primero es el **Diploma de las Mil Contribuciones**: más de 1,000 contribuciones en GitHub durante un año. Se otorgan solos cada semana y se ven en el carnet y en `diploma.html`.
+
 ## En tu perfil
 
 Todo hermano debe llevar EPSI en su perfil de GitHub:

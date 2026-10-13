@@ -46,10 +46,20 @@ Las reglas están en el [código de conducta](CODE_OF_CONDUCT.md). Las medidas, 
 
 Cada medida se explica por escrito a la persona afectada.
 
-## 6. Seguridad y datos
+## 6. Reconocimientos
+
+Kraft recompensa a los hermanos registrados con diplomas de reconocimiento. Cada diploma es un documento imprimible, con número propio, verificable en la web.
+
+| Diploma | Requisito |
+|---|---|
+| Diploma de las Mil Contribuciones | Más de 1,000 contribuciones en GitHub durante los últimos 365 días |
+
+Las contribuciones se consultan cada semana con la API de GitHub y cuentan las visibles en el perfil de la persona. Un diploma otorgado no se retira. El catálogo está en `data/diplomas.json`.
+
+## 7. Seguridad y datos
 
 El registro público solo guarda el usuario de GitHub, el número, el grado, el área y la fecha. Las vulnerabilidades se reportan según [SECURITY.md](SECURITY.md).
 
-## 7. Cambios
+## 8. Cambios
 
 Este documento evoluciona. Cualquier hermano puede proponer cambios con un pull request.
