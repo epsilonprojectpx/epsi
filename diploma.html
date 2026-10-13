@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diploma de reconocimiento · EPSI</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="brand/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=EB+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1f4f82;--deep:#12304f;--steel:#4b6d93;--sky:#87a5d6;--gold:#d8c55a;--paper:#fbfdff}
+*{box-sizing:border-box;margin:0}
+body{background:var(--sky);font-family:'EB Garamond',Georgia,serif;color:var(--deep);padding:24px 12px 40px;min-height:100vh}
+.bar{max-width:1100px;margin:0 auto 16px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.bar a,.bar button{font-family:'Cinzel',serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--deep);background:#fff;border:1px solid var(--steel);border-radius:7px;padding:11px 16px;cursor:pointer;min-height:44px;display:inline-flex;align-items:center}
+.bar .acts{display:flex;gap:8px;flex-wrap:wrap}
+.hoja{container-type:inline-size;max-width:1100px;margin:0 auto;aspect-ratio:11/8.5;background:var(--paper);position:relative;overflow:hidden;box-shadow:0 18px 50px rgba(18,48,79,.35)}
+.rayos{position:absolute;inset:-50%;background:repeating-conic-gradient(from 0deg at 50% 50%,rgba(135,165,214,.16) 0 3deg,transparent 3deg 6deg)}
+.marco{position:absolute;inset:2.4cqw;border:.9cqw double var(--navy)}
+.marco2{position:absolute;inset:4.4cqw;border:.18cqw solid var(--gold)}
+.cont{position:absolute;inset:6cqw 8cqw;display:flex;flex-direction:column;align-items:center;text-align:center;justify-content:space-between}
+.emb{width:9.5cqw;height:9.5cqw;border-radius:2cqw;box-shadow:0 .6cqw 1.6cqw rgba(18,48,79,.3)}
+.org{font-family:'Cinzel',serif;font-weight:700;font-size:1.5cqw;letter-spacing:.5em;padding-left:.5em;color:var(--steel);text-transform:uppercase;margin-top:.8cqw}
+h1{font-family:'Cinzel',serif;font-weight:900;font-size:4.6cqw;line-height:1.05;letter-spacing:.06em;color:var(--navy);text-transform:uppercase}
+.sub{font-family:'Cinzel',serif;font-size:1.5cqw;letter-spacing:.3em;padding-left:.3em;text-transform:uppercase;color:var(--steel)}
+.otorga{font-style:italic;font-size:2cqw;color:var(--steel)}
+.nombre{font-family:'EB Garamond',serif;font-style:italic;font-weight:600;font-size:6.6cqw;line-height:1;color:var(--deep);padding:0 3cqw;border-bottom:.2cqw solid var(--gold)}
+.user{font-family:'Cinzel',serif;font-size:1.7cqw;letter-spacing:.2em;color:var(--steel)}
+.motivo{font-size:2.2cqw;line-height:1.35;max-width:68cqw}
+.motivo b{font-family:'Cinzel',serif;color:var(--navy);letter-spacing:.04em}
+.firmas{display:flex;justify-content:space-between;align-items:flex-end;width:100%;gap:2cqw}
+.firma{width:26cqw}
+.firma .tr{font-family:'EB Garamond',serif;font-style:italic;font-weight:600;font-size:3.4cqw;line-height:1;border-bottom:.15cqw solid var(--deep);padding-bottom:.4cqw}
+.firma .c{font-family:'Cinzel',serif;font-size:1.15cqw;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin-top:.7cqw}
+.sello{width:12cqw;height:12cqw;border-radius:50%;background:radial-gradient(circle at 35% 30%,#efe192,#d8c55a 55%,#a89a3a);border:.5cqw solid #b7a540;display:grid;place-items:center;box-shadow:0 .6cqw 1.4cqw rgba(18,48,79,.35);position:relative}
+.sello::after{content:"";position:absolute;inset:.9cqw;border:.2cqw dashed rgba(18,48,79,.5);border-radius:50%}
+.sello span{font-family:'Cinzel',serif;font-weight:900;font-size:3.6cqw;color:var(--deep);line-height:1}
+.pie{font-family:'Cinzel',serif;font-size:1.05cqw;letter-spacing:.14em;text-transform:uppercase;color:var(--steel)}
+.err{background:#fff;max-width:620px;margin:40px auto;padding:30px;text-align:center;border:1px solid var(--steel);font-size:20px}
+@media print{
+  @page{size:landscape;margin:0}
+  body{background:#fff;padding:0}
+  .bar{display:none}
+  .hoja{max-width:none;width:100vw;box-shadow:none;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+@media(max-width:620px){.bar a,.bar button{font-size:11px;padding:10px 12px}}
+</style>
+</head>
+<body>
+<div class="bar">
+  <a href="./">Volver al sitio</a>
+  <div class="acts"><button id="copiar" type="button">Copiar enlace</button><button id="imprimir" type="button">Imprimir o guardar PDF</button></div>
+</div>
+<div id="raiz"></div>
+<script>
+(async () => {
+  const q = new URLSearchParams(location.search);
+  const u = (q.get('u') || '').toLowerCase(), id = q.get('d') || 'mil-contribuciones';
+  const raiz = document.getElementById('raiz');
+  const fallo = t => { raiz.innerHTML = `<div class="err">${t}</div>`; };
+  try {
+    const [reg, cat] = await Promise.all([
+      fetch('data/miembros.json', { cache: 'no-cache' }).then(r => r.json()),
+      fetch('data/diplomas.json', { cache: 'no-cache' }).then(r => r.json())
+    ]);
+    const m = reg.miembros.find(x => x.usuario.toLowerCase() === u);
+    const def = cat.diplomas.find(d => d.id === id);
+    const dip = m && (m.diplomas || []).find(d => d.id === id);
+    if (!m || !def || !dip) return fallo('Este diploma no existe o aún no ha sido otorgado.');
+    const fecha = new Date(dip.fecha + 'T12:00:00').toLocaleDateString('es-NI', { day: 'numeric', month: 'long', year: 'numeric' });
+    const valor = Number(dip.valor).toLocaleString('en-US');
+    const num = String(dip.numero).padStart(4, '0');
+    document.title = `${def.nombre} · @${m.usuario}`;
+    raiz.innerHTML = `
+    <div class="hoja" id="hoja"><div class="rayos"></div><div class="marco"></div><div class="marco2"></div>
+      <div class="cont">
+        <div><img class="emb" src="brand/logo.svg" alt=""><div class="org">EPSI · Managua, Nicaragua</div></div>
+        <div><div class="sub">Diploma de reconocimiento</div><h1></h1></div>
+        <div class="otorga">Kraft recompensa a</div>
+        <div><div class="nombre"></div><div class="user"></div></div>
+        <p class="motivo"></p>
+        <div class="firmas">
+          <div class="firma"><div class="tr">Kraft</div><div class="c">Quien recompensa</div></div>
+          <div class="sello"><span>ε</span></div>
+          <div class="firma"><div class="tr f2"></div><div class="c">Hermano-Padre fundador</div></div>
+        </div>
+        <div class="pie"></div>
+      </div></div>`;
+    const $ = s => raiz.querySelector(s);
+    $('h1').textContent = def.nombre;
+    $('.nombre').textContent = m.nombre || '@' + m.usuario;
+    $('.user').textContent = m.nombre ? '@' + m.usuario : `Hermano N.° ${m.numero}`;
+    $('.motivo').innerHTML = `por superar las <b>1,000 contribuciones</b> en un año, con <b>${valor}</b> contribuciones registradas en GitHub.`;
+    $('.f2').textContent = '@' + (reg.miembros.find(x => x.grado === 'Hermano-Padre')?.usuario || 'kisnner26');
+    $('.pie').textContent = `Diploma N.° ${num} · Hermano N.° ${m.numero} · ${fecha}`;
+  } catch (e) { fallo('No se pudo cargar el diploma. Vuelve en un momento.'); }
+})();
+document.getElementById('imprimir').onclick = () => print();
+document.getElementById('copiar').onclick = e => navigator.clipboard.writeText(location.href).then(() => { e.target.textContent = 'Copiado'; }, () => {});
+</script>
+</body>
+</html>
