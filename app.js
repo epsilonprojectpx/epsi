@@ -2,24 +2,29 @@
   const REPO = 'kisnner26/epsi';
   const $ = (s, r = document) => r.querySelector(s);
 
-  /* música: sin botón para apagarla. arranca sola; si el navegador lo bloquea,
-     arranca con la primera interacción, y se reanuda si algo la pausa */
+  /* audio: se intenta sonar apenas carga la página. los navegadores solo lo permiten si el sitio
+     ya tiene permiso de sonido; si no, se reintenta en cada gesto que el navegador acepte */
   const aud = $('#aud');
   aud.volume = .5;
-  const play = () => { if (aud.paused) aud.play().catch(() => {}); };
-  play();
-  ['pointerdown', 'keydown', 'touchstart', 'scroll', 'wheel'].forEach(ev =>
-    addEventListener(ev, play, { passive: true }));
-  aud.addEventListener('pause', () => { if (!aud.ended) setTimeout(play, 50); });
-  document.addEventListener('visibilitychange', play);
-
-  /* voz: "kifflom" a demanda */
   const voz = new Audio('assets/kifflom.mp3');
   voz.preload = 'auto';
   const kifflom = () => { try { voz.currentTime = 0; voz.play().catch(() => {}); } catch (e) {} };
-  // al entrar: una sola vez, con la primera interacción
-  const alEntrar = () => { kifflom(); ['pointerdown', 'keydown', 'touchstart'].forEach(ev => removeEventListener(ev, alEntrar)); };
-  ['pointerdown', 'keydown', 'touchstart'].forEach(ev => addEventListener(ev, alEntrar, { passive: true }));
+  let entro = false;   // la voz de entrada suena una sola vez
+  const intentar = () => {
+    if (aud.paused) aud.play().catch(() => {});
+    if (!entro) {
+      voz.currentTime = 0;
+      voz.play().then(() => { entro = true; }).catch(() => {});
+    }
+  };
+  intentar();
+  ['DOMContentLoaded', 'load', 'pageshow', 'focus', 'visibilitychange'].forEach(ev => addEventListener(ev, intentar));
+  aud.addEventListener('canplaythrough', intentar);
+  voz.addEventListener('canplaythrough', intentar);
+  ['pointerdown', 'pointerup', 'click', 'keydown', 'touchstart', 'touchend', 'mousemove', 'scroll', 'wheel'].forEach(ev =>
+    addEventListener(ev, () => { if (aud.paused || !entro) intentar(); }, { passive: true }));
+  aud.addEventListener('pause', () => { if (!aud.ended) setTimeout(() => aud.play().catch(() => {}), 50); });
+
   // a demanda: el botón y la palabra del menú
   $('#decir').addEventListener('click', kifflom);
   document.querySelector('.menu a[href="#kifflom"]').addEventListener('click', kifflom);
