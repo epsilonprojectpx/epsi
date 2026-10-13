@@ -1,0 +1,39 @@
+name: Reportar un error
+description: Algo no funciona como debería
+title: "error: "
+labels: ["tipo: error"]
+body:
+  - type: textarea
+    id: que
+    attributes:
+      label: Qué pasa
+      description: Describe el problema y qué esperabas que pasara.
+    validations:
+      required: true
+  - type: textarea
+    id: pasos
+    attributes:
+      label: Pasos para reproducirlo
+      placeholder: |
+        1. Abrir ...
+        2. Pulsar ...
+        3. Ver ...
+    validations:
+      required: true
+  - type: dropdown
+    id: dispositivo
+    attributes:
+      label: Dispositivo
+      options:
+        - Computadora
+        - Teléfono
+        - Tableta
+    validations:
+      required: true
+  - type: input
+    id: navegador
+    attributes:
+      label: Navegador y versión
+      placeholder: Safari 18, Chrome 130
+    validations:
+      required: false

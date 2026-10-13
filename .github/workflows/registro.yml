@@ -72,8 +72,10 @@ jobs:
             const ya = reg.miembros.find(x => x.usuario.toLowerCase() === perfil.login.toLowerCase());
             if (ya) { await say(`@${perfil.login} ya estaba registrado como hermano N.° ${ya.numero}.`); return close(); }
 
+            const am = (issue.body || '').match(/###\s*Área de interés\s*\n+\s*([^\n]+)/i);
+            const area = am ? am[1].trim().slice(0, 40) : 'General';
             const numero = reg.miembros.reduce((a, x) => Math.max(a, x.numero), 0) + 1;
-            reg.miembros.push({ numero, usuario: perfil.login, grado: 'Buscador', fecha: new Date().toISOString().slice(0, 10), solicitud: issue.number });
+            reg.miembros.push({ numero, usuario: perfil.login, grado: 'Buscador', area, fecha: new Date().toISOString().slice(0, 10), solicitud: issue.number });
             fs.writeFileSync(ruta, JSON.stringify(reg, null, 2) + '\n');
             core.exportVariable('NUEVO', `${numero}:${perfil.login}`);
 

@@ -1,0 +1,8 @@
+# Los cambios sensibles necesitan a un Hermano-Padre
+*                    @epsilonprojectpx/hermanos-padre
+/.github/            @epsilonprojectpx/hermanos-padre
+/data/               @epsilonprojectpx/hermanos-padre
+/brand/              @epsilonprojectpx/hermanos-padre
+/scripts/            @epsilonprojectpx/hermanos-padre
+GOVERNANCE.md        @epsilonprojectpx/hermanos-padre
+CODE_OF_CONDUCT.md   @epsilonprojectpx/hermanos-padre

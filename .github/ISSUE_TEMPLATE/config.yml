@@ -1,1 +1,11 @@
 blank_issues_enabled: false
+contact_links:
+  - name: Preguntas y conversación
+    url: https://github.com/epsilonprojectpx/epsi/discussions
+    about: Para dudas generales, ideas sueltas y conversación entre hermanos.
+  - name: Vulnerabilidades de seguridad
+    url: https://github.com/epsilonprojectpx/epsi/security/advisories/new
+    about: Reporta de forma privada. No abras un issue público.
+  - name: Sitio web de EPSI
+    url: https://epsilonprojectpx.github.io/epsi/
+    about: Registro de hermanos, carnet, reglas y beneficios.
