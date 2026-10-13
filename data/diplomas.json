@@ -1,0 +1,11 @@
+{
+  "diplomas": [
+    {
+      "id": "mil-contribuciones",
+      "nombre": "Diploma de las Mil Contribuciones",
+      "lema": "Más de 1,000 contribuciones en un año",
+      "descripcion": "Se otorga a quien supera las 1,000 contribuciones en GitHub durante los últimos 365 días.",
+      "umbral": 1000
+    }
+  ]
+}
