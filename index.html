@@ -32,6 +32,7 @@
     <a href="#beneficios">beneficios</a>
     <a href="#kifflom">kifflom!</a>
     <a href="#testimonios">el registro</a>
+    <a href="#reglas">reglas</a>
     <a href="#test">la prueba</a>
     <a href="#contacto">el juramento</a>
   </nav>
@@ -115,6 +116,19 @@
         <div id="checkout" aria-live="polite"></div>
       </form>
 
+      <h2 class="h" id="reglas">las reglas de la hermandad</h2>
+      <p class="lead">Siete normas que ordenan la casa. Valen para todo hermano, sin excepción.</p>
+      <ol class="rules">
+        <li><b>Respeto ante todo.</b> Se critica el código, nunca a la persona.</li>
+        <li><b>Una cuenta, una persona.</b> Nadie solicita ingreso en nombre de otro.</li>
+        <li><b>Cambios pequeños y claros.</b> Un commit por idea, un pull request por propósito.</li>
+        <li><b>Nada de datos personales.</b> El registro solo guarda tu usuario de GitHub.</li>
+        <li><b>Las decisiones se explican.</b> Los Hermanos-Padre deciden y lo dejan por escrito.</li>
+        <li><b>El registro es sagrado.</b> Nadie altera insignias, números ni grados a mano.</li>
+        <li><b>Quien incumple, se corrige.</b> Aviso, suspensión y, en último caso, retiro del registro.</li>
+      </ol>
+      <p class="docs">Documentos: <a href="https://github.com/epsilonprojectpx/epsi/blob/main/CODE_OF_CONDUCT.md" target="_blank" rel="noopener">código de conducta</a> · <a href="https://github.com/epsilonprojectpx/epsi/blob/main/GOVERNANCE.md" target="_blank" rel="noopener">gobernanza</a> · <a href="https://github.com/epsilonprojectpx/epsi/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">cómo contribuir</a></p>
+
       <h2 class="h" id="test">la prueba de pureza</h2>
       <p class="lead">Responde sin pensar. Pensar te retrasa.</p>
       <div class="quiz" id="quiz" aria-live="polite"></div>
@@ -124,10 +138,16 @@
       <form id="apply">
         <label for="u">tu usuario de github</label>
         <input id="u" required maxlength="39" pattern="[A-Za-z0-9\-]+" placeholder="kisnner26">
+        <label for="a">área de interés</label>
+        <select id="a">
+          <option>Desarrollo web</option><option>Apps Apple</option><option>Backend y APIs</option>
+          <option>Diseño y marca</option><option>Seguridad</option><option>Otra área</option>
+        </select>
         <label for="m">¿qué carga quieres entregar al Padre?</label>
         <textarea id="m" rows="3" maxlength="400" placeholder="pensar demasiado."></textarea>
         <button class="pill green sub" type="submit">ENTREGO MI PENSAMIENTO<b>KIFFLOM.</b></button>
         <p class="small">Necesitas una cuenta de GitHub. No pongas teléfono ni correo: la solicitud es pública.</p>
+        <p class="small">¿Otra cosa? <a href="https://github.com/epsilonprojectpx/epsi/issues/new?template=propuesta.yml" target="_blank" rel="noopener">Proponer una mejora</a> · <a href="https://github.com/epsilonprojectpx/epsi/issues/new?template=error.yml" target="_blank" rel="noopener">Reportar un error</a> · <a href="https://github.com/epsilonprojectpx/epsi/discussions" target="_blank" rel="noopener">Discusiones</a></p>
       </form>
 
     </main>

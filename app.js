@@ -83,7 +83,7 @@
       <button type="button" class="mini">copiar</button></div>`;
     $('.av', card).src = `https://github.com/${m.usuario}.png?size=192`;
     $('.n', card).textContent = `Hermano N.° ${m.numero}`;
-    $('.g', card).textContent = `Grado: ${m.grado}`;
+    $('.g', card).textContent = `Grado: ${m.grado} · ${m.area || 'General'}`;
     $('.u', card).textContent = `@${m.usuario} · desde ${m.fecha}`;
     $('.ins', card).src = `${SITIO}/badges/${m.usuario.toLowerCase()}.svg`;
     $('textarea', card).value = md;
@@ -142,6 +142,7 @@
     const user = $('#u').value.trim().replace(/^@/, ''), why = $('#m').value.trim();
     const q = new URLSearchParams({ template: 'solicitud.yml', title: `juramento de ingreso: @${user}`, usuario: user });
     if (why) q.set('motivo', why);
+    q.set('area', $('#a').value);
     window.open(`https://github.com/${REPO}/issues/new?${q}`, '_blank', 'noopener');
   });
 

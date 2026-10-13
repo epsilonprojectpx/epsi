@@ -169,3 +169,12 @@ form .pill{justify-self:start}
   .carnet .n{font-size:21px}
   .benef{grid-template-columns:1fr}
 }
+
+/* reglas y selector */
+.rules{margin:6px 0 0 4px;padding:0;list-style:none;counter-reset:r}
+.rules li{counter-increment:r;position:relative;padding:8px 0 8px 40px;border-bottom:1px solid #d6dce6}
+.rules li::before{content:counter(r,upper-roman);position:absolute;left:0;top:7px;font-family:'Cinzel',serif;font-weight:900;font-size:17px;color:#9bb0cc;width:34px}
+.docs{margin-top:10px;font-size:15px}
+.docs a,.small a{color:var(--steel)}
+select{width:100%;font:inherit;padding:9px 11px;border:1px solid #98a4b8;border-radius:7px;background:#fff;color:var(--ink)}
+@media(max-width:620px){select{padding:12px;font-size:17px}}
