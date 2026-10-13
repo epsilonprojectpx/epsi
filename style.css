@@ -65,9 +65,9 @@ a{color:inherit}
 
 /* devotos */
 .wall{display:flex;flex-wrap:wrap;gap:10px}
-.wall a{width:78px;text-align:center;text-decoration:none;font-size:12px;font-family:'Cinzel',serif;word-break:break-all;line-height:1.2}
+.wall a{width:104px;text-align:center;text-decoration:none;font-size:12px;font-family:'Cinzel',serif;overflow-wrap:anywhere;line-height:1.2}
 .wall b{display:block;font-size:11px;letter-spacing:.1em;color:var(--steel)}
-.wall img{width:78px;height:78px;object-fit:cover;display:block;border:1px solid #777;border-radius:8px;margin-bottom:4px}
+.wall img{width:78px;height:78px;margin-left:auto;margin-right:auto;object-fit:cover;display:block;border:1px solid #777;border-radius:8px;margin-bottom:4px}
 .empty{font-style:italic;color:#6c7480}
 
 /* test */
@@ -120,7 +120,7 @@ form .pill{justify-self:start}
   .quiz{padding:14px}
   .mini{min-height:46px;padding:0 16px}
   input,textarea{padding:12px;font-size:17px}
-  .wall a{width:70px}.wall img{width:70px;height:70px}
+  .wall a{width:92px}.wall img{width:70px;height:70px}
   .ranks td:last-child{display:none}
   .face{max-width:180px}
   .cols{padding:16px 12px 8px}
