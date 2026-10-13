@@ -64,7 +64,13 @@
       if (!u) return;
       $('#q').value = u;
       $('#check').requestSubmit();
-      setTimeout(() => $('#check').scrollIntoView({ block: 'center' }), 150);
+      try { history.scrollRestoration = 'manual'; } catch (e) {}
+      const ir = () => {
+        const el = $('#check');
+        window.scrollTo({ top: el.getBoundingClientRect().top + scrollY - 90, behavior: 'instant' });
+      };
+      if (document.readyState === 'complete') setTimeout(ir, 400);
+      else addEventListener('load', () => setTimeout(ir, 400));
     })
     .catch(() => { wall.innerHTML = '<span class="empty">El registro no responde. Vuelve en un momento.</span>'; });
 
