@@ -82,7 +82,8 @@ jobs:
         run: |
           git config user.name "epsi[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/miembros.json
+          node scripts/insignia.mjs
+          git add data/miembros.json badges
           git commit -m "registro: hermano N.° ${NUEVO%%:*} (@${NUEVO#*:})"
           git pull --rebase origin main
           git push origin HEAD:main
@@ -94,6 +95,6 @@ jobs:
           script: |
             const [numero, usuario] = process.env.NUEVO.split(':');
             await github.rest.issues.createComment({ ...context.repo, issue_number: context.payload.issue.number,
-              body: `Bienvenido, @${usuario}. Eres el hermano N.° ${numero}, grado Buscador. Ya apareces en el registro de la web.\n\nKifflom.` });
+              body: `Bienvenido, @${usuario}. Eres el hermano N.° ${numero}, grado Buscador. Ya apareces en el registro de la web.\n\nTu insignia para el README de tu perfil:\n\n\`\`\`markdown\n[![epsi](https://kisnner26.github.io/epsi/badges/${usuario.toLowerCase()}.svg)](https://kisnner26.github.io/epsi/)\n\`\`\`\n\nTu carnet está en https://kisnner26.github.io/epsi/#testimonios\n\nKifflom.` });
             await github.rest.issues.addLabels({ ...context.repo, issue_number: context.payload.issue.number, labels: ['registrado'] });
             await github.rest.issues.update({ ...context.repo, issue_number: context.payload.issue.number, state: 'closed' });
